@@ -24,6 +24,7 @@
 
 <script>
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 export default {
   data() {
@@ -37,11 +38,15 @@ export default {
   methods: {
     async fetchRates() {
       try {
+        const csrfToken = Cookies.get('XSRF-TOKEN');
         const response = await axios.get('http://localhost:8080/conversions', {
           params: {
             amount: this.amount,
             from: this.fromCurrency,
             to: this.toCurrency
+          },
+          headers: {
+            'X-XSRF-TOKEN': csrfToken
           }
         });
         this.result = response.data;
