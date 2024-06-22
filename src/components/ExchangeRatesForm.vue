@@ -16,8 +16,7 @@
       <button type="submit">Convert</button>
     </form>
     <div v-if="result">
-      <p>Converted Amount: {{ result.convertedAmount }}</p>
-      <p>Rate: {{ result.rate }}</p>
+      <p>Converted Amount: {{ result }}</p>
     </div>
   </div>
 </template>
